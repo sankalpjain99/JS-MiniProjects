@@ -2,6 +2,7 @@ buttonColors = ["red", "blue", "green", "yellow"];
 var gamePattern = [];
 var userPattern = [];
 var level=0;
+var maxLevel=0;
 
 // Monitors Button Clicks 
 $(".btn").click(function(){
@@ -16,6 +17,7 @@ $(".btn").click(function(){
 $(document).keypress(function(){
     if(!level){
         $("#level-title").text("Level " + level);
+        $("#player-score").html("Your Score:" + level + " &nbsp High Score:" + maxLevel);
         nextSequence();
     }
 })
@@ -46,10 +48,13 @@ function animatePress(currentColor){
     }, 100);
 }
 
+// Function to check answers given by user 
 function checkAnswer(currLevel){
     if(gamePattern[currLevel] == userPattern[currLevel]){
         if(userPattern.length === gamePattern.length){
             setTimeout(function(){
+                maxLevel = Math.max(level, maxLevel);
+                $("#player-score").html("Your Score:" + level + " &nbsp High Score:" + maxLevel);
                 nextSequence();
             }, 1000);
         }
@@ -65,6 +70,7 @@ function checkAnswer(currLevel){
     }
 }
 
+// Function to Restart Game 
 function startOver(){
     level=0;
     gamePattern=[];
