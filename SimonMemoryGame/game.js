@@ -9,6 +9,7 @@ $(".btn").click(function(){
     userPattern.push(userColor);
     playSound(userColor);
     animatePress(userColor);
+    checkAnswer(userPattern.length-1);
 })
 
 // Monitors KeyBoard Presses 
@@ -21,6 +22,7 @@ $(document).keypress(function(){
 
 // Function to start sequence of steps at increasing level and at the start of the game 
 function nextSequence(){
+    userPattern=[]
     level++;
     $("#level-title").text("Level " + level);
     var num = Math.floor(Math.random()*4);
@@ -31,8 +33,8 @@ function nextSequence(){
 }
 
 // Function to play appropriate sound according to color 
-function playSound(color){
-    var sound = new Audio("sounds/" + color + ".mp3");
+function playSound(reqSound){
+    var sound = new Audio("sounds/" + reqSound + ".mp3");
     sound.play();
 }
 
@@ -42,6 +44,30 @@ function animatePress(currentColor){
     setTimeout(function(){
         $("#"+currentColor).removeClass("pressed");
     }, 100);
+}
+
+function checkAnswer(currLevel){
+    if(gamePattern[currLevel] == userPattern[currLevel]){
+        if(userPattern.length === gamePattern.length){
+            setTimeout(function(){
+                nextSequence();
+            }, 1000);
+        }
+    }
+    else{
+        playSound("wrong");
+        $("body").addClass("game-over");
+        setTimeout(function(){
+            $("body").removeClass("game-over");
+        }, 200);
+        $("#level-title").text("Game Over, Press any key to restart!");
+        startOver();
+    }
+}
+
+function startOver(){
+    level=0;
+    gamePattern=[];
 }
 
 
