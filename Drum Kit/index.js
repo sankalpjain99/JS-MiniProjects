@@ -4,12 +4,14 @@ for(var i=0;i<buttons.length;i++){
     buttons[i].addEventListener("click",function(){
         var buttonInnerHTML = this.innerHTML;
         makeSound(buttonInnerHTML);
+        animateButton(buttonInnerHTML);
     });
 }
 
 // Detect KeyBoard Press 
 document.addEventListener("keydown",function(event){
     makeSound(event.key);
+    animateButton(event.key);
 })
 
 // Functiotn to Play Appropriate Sound 
@@ -45,6 +47,17 @@ function makeSound(key){
             break
         default:
             break;
+    }
+}
+
+function animateButton(key){
+    supportedKeys = ["w", "a", "s", "d", "j", "k", "l"];
+    if(supportedKeys.includes(key)){
+        var activeButton = document.querySelector("."+key);
+        activeButton.classList.add("pressed");
+        setTimeout(function(){
+            activeButton.classList.remove("pressed");
+        }, 100);
     }
 }
 
