@@ -1,17 +1,31 @@
+body{
+    background: #fc4a1a;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, #f77b33, #fc4a1a);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to left, #f77b33, #fc4a1a); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    font-family: 'Lato', sans-serif;
+}
+
 .calc-button{
-    width: 100px;
-    height: 100px;
-    background-color: blue;
+    width: 90px;
+    height: 90px;
+    background-color: rgb(104, 104, 104);
     display: inline-block;
-    margin-right: -4px;
     text-align: center;
-    line-height: 100px;
+    line-height: 90px;
+    border-radius: 30px;
+    font-size: 30px;
+    margin: 5px;
+}
+
+.calc-button:hover{
+    background-color: rgba(136, 136, 136, 0.596);
 }
 
 .container{
-    background-color: red;
+    background-color: black;
+    border-radius: 20px;
     width: 400px;
-    height: 600px;
+    height: 645px;
     margin: auto;
     position: absolute;
     top: 0;
@@ -20,27 +34,52 @@
     right: 0;
     max-width: 100%;
     max-height: 100%;
-    padding: 0;
+    padding: 15px;
+    font-size: 0;
 }
 
 .equal-sign{
+    background-color: orange;
+    border-radius: 30px;
     display: inline-block;
-    width: 100px;
-    height: 400px;
+    width: 90px;
+    height: 390px;
     position: absolute;
     text-align: center;
     line-height: 400px;
+    margin: 5px;
+    font-size: 30px;
+}
+
+.equal-sign:hover{
+    background-color: rgba(255, 166, 0, 0.596);
+}
+
+h1{
+    color: white;
+    text-align: center;
+    margin-top: 60px;
 }
 
 .input-field{
-    height: 80px;
-    background-color: whitesmoke;
-    margin: 10px;
+    height: 135px;
+    width: 390px;
+    background-color: white;
+    margin: 0 auto 15px;
+    border-radius: 20px;
 }
 
 .numbers{
     width: 300px;
     display: inline-block;
+}
+
+.operators .calc-button{
+    background-color: rgb(241, 194, 106);
+}
+
+.operators .calc-button:hover{
+    background-color: rgba(241, 194, 106, 0.596);
 }
 
 .row{
