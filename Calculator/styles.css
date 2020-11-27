@@ -67,6 +67,10 @@ h1{
     background-color: white;
     margin: 0 auto 15px;
     border-radius: 20px;
+    text-align: right;
+    font-size: 50px;
+    line-height: 135px;
+    overflow-x: auto;
 }
 
 .numbers{
